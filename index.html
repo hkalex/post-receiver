@@ -11,6 +11,10 @@
           },
           false,
         );
+
+        setTimeout(() => {
+          window.opener.postMessage("Hi2", "https://post-receiver.pages.dev")
+        }, 1000)
     </script>
 </head>
 <body>
