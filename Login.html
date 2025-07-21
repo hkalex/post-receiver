@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script>
+        function getQueryVariable(variable)
+        {
+            var query = window.location.search.substring(1);
+            var vars = query.split("&");
+            for (var i=0;i<vars.length;i++) {
+                    var pair = vars[i].split("=");
+                    if(pair[0] == variable){return pair[1];}
+            }
+            return(false);
+        }
+
+        var countDown = 10
+        setInterval(() => {
+            var secEle = document.getElementById("sec")
+            if (secEle) {
+                secEle.innerHTML = countDown
+                countDown--
+                if (countDown == 0) {
+                    // redirect back
+                    var redirect_back = getQueryVariable("redirect_back")
+                    window.location.href = redirect_back
+                }
+            }
+        }, 1000)
+
+
+    </script>
+</head>
+<body>
+    Login...it will redirect back in <p id="sec">10</p> seconds
+</body>
+</html>
