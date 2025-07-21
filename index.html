@@ -7,14 +7,18 @@
     <script>
         window.addEventListener("message",
           (event) => {
-            console.log(event.origin)
+            if (event.origin == "https://caller.hkalex.com") {
+              if (event.data == "Ready?") {
+
+                // reply Yes after 3 seconds
+                setTimeout(function() {
+                  event.source.postMessage("Yes", event.origin);
+                }, 3000)
+              }
+            }
           },
           false,
         );
-
-        setTimeout(() => {
-          window.opener.postMessage("Hi2", "https://post-receiver.pages.dev")
-        }, 1000)
     </script>
 </head>
 <body>
