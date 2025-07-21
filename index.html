@@ -5,20 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        window.addEventListener("message",
-          (event) => {
-            if (event.origin == "https://caller.hkalex.com") {
-              if (event.data == "Ready?") {
-
-                // reply Yes after 3 seconds
-                setTimeout(function() {
-                  event.source.postMessage("Yes", event.origin);
-                }, 3000)
-              }
-            }
-          },
-          false,
-        );
+        const PARENT_URL = "https://caller.hkalex.com"
+        setTimeout(function() {
+          window.opener.postMessage("Yes", PARENT_URL);
+        }, 3000)
     </script>
 </head>
 <body>
