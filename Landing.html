@@ -24,13 +24,24 @@
 </body>
 <script>
     var msg = document.getElementById("msg")
-    var countDown = 3
-    setInterval(() => {
-        msg.innerHTML = `No token found, redirect to login page in ${countDown} seconds`
-        countDown--
-        if (countDown == 0) {
-            window.location.href = "/Login.html?redirect_back=Actual.html"
-        }
-    })
+    var countDown = 5
+    var token = getQueryVariable("token")
+    if (!token) {
+        setInterval(() => {
+            msg.innerHTML = `No token found, redirect to login page in ${countDown} seconds`
+            countDown--
+            if (countDown == 0) {
+                window.location.href = "/Login.html?redirect_back=Actual.html"
+            }
+        }, 1000)
+    } else {
+        setInterval(() => {
+            msg.innerHTML = `Token ${token} found, redirect to Actual.html in ${countDown} seconds`
+            countDown--
+            if (countDown == 0) {
+                window.location.href = "/Actual.html"
+            }
+        }, 1000)
+    }
 </script>
 </html>
