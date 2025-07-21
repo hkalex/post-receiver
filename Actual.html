@@ -30,6 +30,7 @@
         }
     })
     if (window.opener) {
+        // This is the way to tell the caller that "READY"
         window.opener.postMessage("READY", PARENT_DOMAIN)
     }
 </script>
