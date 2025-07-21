@@ -5,9 +5,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <script>
-        window.addEventListener("message", event => {
-            console.log(event.source);
-        })
+        window.addEventListener("message",
+          (event) => {
+            console.log(event.origin)
+          },
+          false,
+        );
     </script>
 </head>
 <body>
