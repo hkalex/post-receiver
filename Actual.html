@@ -5,7 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Actual</title>
     <script>
-        const PARENT_DOMAIN = "https://caller.hkalex.com"
+        const PARENT_DOMAIN = "https://caller.hkalex.com";
+        const SF_DOMAIN = "https://eldersinsurance--devmod.sandbox.lightning.force.com";
+        
         function getQueryVariable(variable)
         {
             var query = window.location.search.substring(1);
@@ -24,14 +26,16 @@
 </body>
 <script>
     window.addEventListener("message", (event) => {
-        if (event.origin == PARENT_DOMAIN) {
+        if (event.origin == PARENT_DOMAIN || event.origin == SF_DOMAIN) {
             var msg = document.getElementById("msg")
             msg.innerText = "Received Msg from " + PARENT_DOMAIN + ": " + event.data
         }
     })
     if (window.opener) {
         // This is the way to tell the caller that "READY"
-        window.opener.postMessage("READY", PARENT_DOMAIN)
+        //window.opener.postMessage("READY", PARENT_DOMAIN)
+        console.log('1');
+         window.opener.postMessage("READY", SF_DOMAIN)
     }
 </script>
 </html>
