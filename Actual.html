@@ -28,7 +28,7 @@
     window.addEventListener("message", (event) => {
         if (event.origin == PARENT_DOMAIN || event.origin == SF_DOMAIN) {
             var msg = document.getElementById("msg")
-            msg.innerText = "Received Msg from " + PARENT_DOMAIN + ": " + JSON.stringify(event.data)
+            msg.innerText = "Received Msg from " + SF_DOMAIN + ": " + JSON.stringify(event.data)
         }
     })
     if (window.opener) {
